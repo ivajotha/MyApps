@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">MyApps</string>
+    <string name="app_name">My Apps</string>
+    <string name="menu_main_titleAdd">Add App</string>
 </resources>
