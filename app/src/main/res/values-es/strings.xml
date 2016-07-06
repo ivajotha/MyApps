@@ -2,4 +2,10 @@
 <resources>
     <string name="app_name">Mis Aplicaciones</string>
     <string name="menu_main_titleAdd">Agregar Aplicación</string>
+    <string name="hit_appName">Nombre aplicación</string>
+    <string name="hit_appNameDev">Nombre desarrollador</string>
+    <string name="hit_appDetails">Detalles aplicación</string>
+    <string name="hit_appUpdate">Actualizar</string>
+    <string name="title_actAdd">Agregar Aplicación</string>
+
 </resources>

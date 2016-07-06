@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
     }
 
+    /* Inflate Menu*/
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main,menu);
@@ -35,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
                         REQUEST_APP_ADD);
                 return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 }
