@@ -47,6 +47,7 @@
             android:id="@+id/row_appStatus"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="15sp"
+            android:gravity="right"
             android:layout_weight="1" />
     </LinearLayout>
 </LinearLayout>

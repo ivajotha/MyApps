@@ -17,4 +17,5 @@
     <string name="msgEmptyApps">no hay app instaladas</string>
     <string name="msgStatusInstall">Instada</string>
     <string name="msgStatusUpdate">Actualizada</string>
+    <string name="menu_app_titleEdit">Editar Applicatión</string>
 </resources>

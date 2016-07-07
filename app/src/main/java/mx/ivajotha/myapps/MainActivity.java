@@ -7,6 +7,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -41,6 +42,39 @@ public class MainActivity extends AppCompatActivity {
         listView = (ListView)findViewById(R.id.contenApps);
         textView = (TextView) findViewById(R.id.actAdd_msgEmtyApps);
         getListApps();
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int postion, long id) {
+                AdapterAppList adapterAppList = (AdapterAppList)parent.getAdapter();
+                ModelAppList modelAppList = adapterAppList.getItem(postion);
+
+                Intent intentApp = new Intent(getApplicationContext(),AppActivity.class);
+                startActivity(intentApp);
+
+
+            }
+        });
+
+/*        listViewApps.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //Accedemos a la información del elemento
+                AdapterItemList adapter = (AdapterItemList)parent.getAdapter();
+                ModelApp modelApp = adapter.getItem(position);
+
+                //Lanzamos la Activity de detalle y enviamos información del elemento a través de Extras
+                Intent intent = new Intent(getApplicationContext(),DetailActivity.class);
+                intent.putExtra(Keys.KEY_APP_ID,modelApp.id);
+                intent.putExtra(Keys.KEY_APP_DEVELOPER,modelApp.appDeveloperName);
+                intent.putExtra(Keys.KEY_APP_NAME,modelApp.appName);
+                intent.putExtra(Keys.KEY_APP_RESOURCEID,modelApp.appResourceId);
+                intent.putExtra(Keys.KEY_APP_UPDATED,modelApp.appUpdated);
+                intent.putExtra(Keys.KEY_APP_DETAIL,modelApp.appDetail);
+                startActivity(intent);
+            }
+        }); */
 
     }
 
