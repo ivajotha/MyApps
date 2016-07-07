@@ -12,5 +12,6 @@
     <string name="msgOk_AddAapp">Iniciando Instalación</string>
     <string name="msgFail_AddAapp">Error en la Instalación</string>
     <string name="msgOk_ExistsApp">La aplicación esta instalada</string>
+    <string name="title_lastInstalledApp">Última aplicación instalada:</string>
 
 </resources>

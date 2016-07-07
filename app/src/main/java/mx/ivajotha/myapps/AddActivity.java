@@ -81,17 +81,13 @@ public class AddActivity extends AppCompatActivity{
                         /** Return List Install App**/
                         Intent intent_return = new Intent();
                         intent_return.putExtra("key_install",respAddApp);
+                        intent_return.putExtra("key_nameApp",appName_);
                         setResult(RESULT_OK, intent_return);
                         finish();
                         Toast.makeText(getApplicationContext(),R.string.msgOk_AddAapp, Toast.LENGTH_SHORT).show();
                     }else{
                         Toast.makeText(getApplicationContext(),R.string.msgFail_AddAapp, Toast.LENGTH_SHORT).show();
                     }
-
-
-
-
-
 
                 }else{
                     Toast.makeText(getApplicationContext(),R.string.msgEmptyViews, Toast.LENGTH_SHORT).show();
@@ -100,11 +96,9 @@ public class AddActivity extends AppCompatActivity{
         });
 
 
-
-
     }
 
-
+    /** Method get random resourceId **/
     public int getRandomImg(){
         final int[ ] myImageId = {
                 R.drawable.ic_action_bug_report,
