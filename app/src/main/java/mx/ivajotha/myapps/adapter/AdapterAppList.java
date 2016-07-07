@@ -39,7 +39,7 @@ public class AdapterAppList extends ArrayAdapter<ModelAppList>{
         nameApp.setText(modelAppList.name.toUpperCase());
         nameDevApp.setText(modelAppList.nameDeveloper);
         imgApp.setImageResource(modelAppList.resourceId);
-        statusApp.setText((modelAppList.updated==0)? "OK":"NEL");
+        statusApp.setText((modelAppList.updated==0)? getContext().getString(R.string.msgStatusInstall):getContext().getString(R.string.msgStatusUpdate));
         return convertView;
 
     }
