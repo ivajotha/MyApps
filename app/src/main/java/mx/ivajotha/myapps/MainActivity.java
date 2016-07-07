@@ -6,9 +6,24 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.List;
+
+import mx.ivajotha.myapps.Model.ModelAppList;
+import mx.ivajotha.myapps.adapter.AdapterAppList;
+import mx.ivajotha.myapps.sql.ItemDataSource;
+
 public class MainActivity extends AppCompatActivity {
+
+    private ItemDataSource itemDataSource;
+    private ListView listView;
+    private TextView textView;
+
 
     private static final int REQUEST_APP_ADD = 1;
 
@@ -20,6 +35,20 @@ public class MainActivity extends AppCompatActivity {
         /* Add Toolbar*/
         Toolbar toolbar = (Toolbar)findViewById(R.id.mytoolbar);
         setSupportActionBar(toolbar);
+
+        /* set Views*/
+        itemDataSource = new ItemDataSource(getApplicationContext());
+        listView = (ListView)findViewById(R.id.contenApps);
+        textView = (TextView) findViewById(R.id.actAdd_msgEmtyApps);
+        getListApps();
+
+    }
+
+    /* Load ListView*/
+    @Override
+    protected void onResume() {
+        super.onResume();
+        getListApps();
     }
 
     /* Inflate Menu*/
@@ -59,6 +88,17 @@ public class MainActivity extends AppCompatActivity {
             super.onActivityResult(requestCode, resultCode, data);
         }
 
+    }
+
+    /* Method inflated ListView*/
+    public void getListApps(){
+        List<ModelAppList> modelAppLists = itemDataSource.getAllApps();
+        if(modelAppLists.size() > 0 ){
+            textView.setVisibility(View.INVISIBLE);
+            listView.setAdapter(new AdapterAppList(getApplicationContext(),modelAppLists));
+        }else{
+            textView.setVisibility(View.VISIBLE);
+        }
     }
 
 

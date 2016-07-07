@@ -1,5 +1,6 @@
 <resources>
-    <string name="app_name">My Apps</string>
+    <string name="app_name">Manager Apps</string>
+    <string name="titleInterMain">Apps</string>
     <string name="menu_main_titleAdd">Add App</string>
     <string name="hit_appName">Name app</string>
     <string name="hit_appNameDev">Name developer</string>
@@ -12,4 +13,5 @@
     <string name="msgFail_AddAapp">Installation error</string>
     <string name="msgOk_ExistsApp">The application is installed</string>
     <string name="title_lastInstalledApp">Last Application Installed:</string>
+    <string name="msgEmptyApps">No app installed</string>
 </resources>

@@ -2,7 +2,11 @@ package mx.ivajotha.myapps.sql;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import mx.ivajotha.myapps.Model.ModelAppList;
 
@@ -38,6 +42,30 @@ public class ItemDataSource {
     {
         db.delete(MySqliteHelper.TABLE_NAME,MySqliteHelper.COLUMN_ID+"=?",
                 new String[]{String.valueOf(modelAppList.id)});
+    }
+
+    public List<ModelAppList> getAllApps(){
+
+        List<ModelAppList> modelAppLists = new ArrayList<>();
+
+        Cursor cursor= db.query(MySqliteHelper.TABLE_NAME,null,null,null,null,null,null);
+
+        while (cursor.moveToNext()) {
+            int id_app = cursor.getInt(cursor.getColumnIndexOrThrow(MySqliteHelper.COLUMN_ID));
+            String name_app =cursor.getString(cursor.getColumnIndexOrThrow(MySqliteHelper.COLUMN_APP_NAME));
+            String namedev_app = cursor.getString(cursor.getColumnIndexOrThrow(MySqliteHelper.COLUMN_APP_NAMEDEV));
+            int resId_app = cursor.getInt(cursor.getColumnIndexOrThrow(MySqliteHelper.COLUMN_APP_RESOURCE));
+            int isUdpate_app = cursor.getInt(cursor.getColumnIndexOrThrow(MySqliteHelper.COLUMN_APP_UPDATED));
+            ModelAppList modelAppList = new ModelAppList();
+            modelAppList.id = id_app;
+            modelAppList.name = name_app;
+            modelAppList.nameDeveloper = namedev_app;
+            modelAppList.resourceId = resId_app;
+            modelAppList.updated = isUdpate_app;
+            modelAppLists.add(modelAppList);
+        }
+
+        return  modelAppLists;
     }
 
 

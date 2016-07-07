@@ -60,7 +60,7 @@ public class AddActivity extends AppCompatActivity{
                     String appName_ = appName.getText().toString();
                     String appNameDev_ = appNameDev.getText().toString();
                     String appDetails_ = appDetails.getText().toString();
-                    Boolean appUpdated_ = appIsUpdate.isChecked() ? true : false;
+                    Integer appUpdated_ = appIsUpdate.isChecked() ? 1 : 0;
                     Boolean appInstaled_ = true;
 
                     //Random random = new Random();

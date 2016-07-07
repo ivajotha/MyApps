@@ -10,5 +10,5 @@ public class ModelAppList {
     public int resourceId;
     public String nameDeveloper;
     public Boolean installed;
-    public Boolean updated;
+    public int updated;
 }

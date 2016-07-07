@@ -1,29 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:minHeight="50dp">
+    android:layout_height="match_parent">
 
     <LinearLayout
-        android:layout_weight="1"
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_weight="1"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:id="@+id/row_txtNameApp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_weight="0.9">
 
-        <TextView
-            android:textSize="15sp"
-            android:layout_weight="1"
-            android:id="@+id/row_txtDestailsApp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:id="@+id/row_appImg"
+            android:src="@drawable/ic_action_perm_camera_mic"
+            android:layout_margin="@dimen/activity_horizontal_margin" />
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_weight="0.1"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/row_appName"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:layout_weight="1" />
+
+        <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/row_appNameDev"
+        android:textColor="@color/colorAccent"
+        android:textSize="15sp"
+        android:layout_weight="1" />
+    </LinearLayout>
 </LinearLayout>

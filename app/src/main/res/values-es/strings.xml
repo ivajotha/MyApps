@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Mis Aplicaciones</string>
+    <string name="app_name">Administrador de Apps</string>
+    <string name="titleInterMain">Apps</string>
     <string name="menu_main_titleAdd">Agregar Aplicación</string>
     <string name="hit_appName">Nombre aplicación</string>
     <string name="hit_appNameDev">Nombre desarrollador</string>
@@ -13,5 +14,6 @@
     <string name="msgFail_AddAapp">Error en la Instalación</string>
     <string name="msgOk_ExistsApp">La aplicación esta instalada</string>
     <string name="title_lastInstalledApp">Última aplicación instalada:</string>
+    <string name="msgEmptyApps">no hay app instaladas</string>
 
 </resources>
