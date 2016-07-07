@@ -32,13 +32,14 @@ public class AdapterAppList extends ArrayAdapter<ModelAppList>{
         TextView nameApp = (TextView) convertView.findViewById(R.id.row_appName);
         TextView nameDevApp = (TextView) convertView.findViewById(R.id.row_appNameDev);
         ImageView imgApp = (ImageView) convertView.findViewById(R.id.row_appImg);
+        TextView statusApp = (TextView)convertView.findViewById(R.id.row_appStatus);
 
 
         ModelAppList modelAppList = getItem(position);
         nameApp.setText(modelAppList.name.toUpperCase());
         nameDevApp.setText(modelAppList.nameDeveloper);
         imgApp.setImageResource(modelAppList.resourceId);
-
+        statusApp.setText((modelAppList.updated==0)? "OK":"NEL");
         return convertView;
 
     }

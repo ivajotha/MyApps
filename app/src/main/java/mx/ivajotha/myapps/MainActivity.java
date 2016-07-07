@@ -69,7 +69,6 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if(REQUEST_APP_ADD == requestCode && resultCode == RESULT_OK){
@@ -77,12 +76,11 @@ public class MainActivity extends AppCompatActivity {
             long respActAdd = data.getExtras().getLong("key_install", -1);
             String nameAppInstalled = data.getExtras().getString("key_nameApp","");
 
-            if(respActAdd != -1)
-                Toast.makeText(getApplicationContext(),"Respuesta Correcta, cargamos la lista...", Toast.LENGTH_SHORT).show();
-
+            if(respActAdd != -1) {
                 String fielRequired = getResources().getString(R.string.title_lastInstalledApp);
                 String titleToobar = fielRequired + " " + nameAppInstalled.toUpperCase();
                 getSupportActionBar().setTitle(titleToobar);
+            }
 
         }else{
             super.onActivityResult(requestCode, resultCode, data);

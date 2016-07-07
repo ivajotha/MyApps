@@ -15,5 +15,6 @@
     <string name="msgOk_ExistsApp">La aplicación esta instalada</string>
     <string name="title_lastInstalledApp">Última aplicación instalada:</string>
     <string name="msgEmptyApps">no hay app instaladas</string>
-
+    <string name="msgStatusInstall">Instada</string>
+    <string name="msgStatusUpdate">Actualizada</string>
 </resources>
