@@ -9,5 +9,8 @@
     <string name="title_actAdd">Agregar Aplicación</string>
     <string name="txt_btnAddApp">Instalar</string>
     <string name="msgEmptyViews">Los campos no puede estar vacíos</string>
+    <string name="msgOk_AddAapp">Iniciando Instalación</string>
+    <string name="msgFail_AddAapp">Error en la Instalación</string>
+    <string name="msgOk_ExistsApp">La aplicación esta instalada</string>
 
 </resources>

@@ -1,5 +1,6 @@
 package mx.ivajotha.myapps;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -62,26 +63,30 @@ public class AddActivity extends AppCompatActivity{
                     Boolean appUpdated_ = appIsUpdate.isChecked() ? true : false;
                     Boolean appInstaled_ = true;
 
-                    Integer intRandom = (int)( Math.random() * 4 );
-                    Integer resourcesId = getRandomImg(intRandom);
+                    //Random random = new Random();
+                    //int intRandom = (int)(random.nextInt() * 4);
+                    Integer resourcesId_ = getRandomImg();
 
                     ModelAppList modelAppList = new ModelAppList();
                     modelAppList.name = appName_;
                     modelAppList.nameDeveloper = appNameDev_;
+                    modelAppList.resourceId = resourcesId_;
                     modelAppList.details = appDetails_;
                     modelAppList.installed = appInstaled_;
                     modelAppList.updated = appUpdated_;
 
-                   itemDataSource.addApp(modelAppList);
+                    long respAddApp = itemDataSource.addApp(modelAppList);
+                    if(respAddApp != -1){
 
-/*
-    long result = appDataSource.saveApp(modelApp);
-                    modelItemList.resourceId = isWifi? R.drawable.ic_device_signal_wifi_4_bar: R.drawable.ic_action_settings_voice;
-                    itemDS.saveItemList(modelItemList);
-                    listView.setAdapter(new AdapterItemList(getActivity(),itemDS.getallItems()));
-
-
-                     */
+                        /** Return List Install App**/
+                        Intent intent_return = new Intent();
+                        intent_return.putExtra("key_install",respAddApp);
+                        setResult(RESULT_OK, intent_return);
+                        finish();
+                        Toast.makeText(getApplicationContext(),R.string.msgOk_AddAapp, Toast.LENGTH_SHORT).show();
+                    }else{
+                        Toast.makeText(getApplicationContext(),R.string.msgFail_AddAapp, Toast.LENGTH_SHORT).show();
+                    }
 
 
 
@@ -100,7 +105,7 @@ public class AddActivity extends AppCompatActivity{
     }
 
 
-    public int getRandomImg(Integer integer){
+    public int getRandomImg(){
         final int[ ] myImageId = {
                 R.drawable.ic_action_bug_report,
                 R.drawable.ic_action_face_unlock,
@@ -108,9 +113,10 @@ public class AddActivity extends AppCompatActivity{
                 R.drawable.ic_action_translate,
                 R.drawable.ic_app_ramdom_1
         };
-
-        return myImageId[integer];
-
+        //nextInt((max+1) - min) + min;
+        int min = 0;
+        int max = myImageId.length - 1;
+        return myImageId[new Random().nextInt((max+1) - min) + min];
     }
 
     /** Methods Toolbar**/

@@ -18,7 +18,7 @@ public class ItemDataSource {
         db=helper.getWritableDatabase();
     }
 
-    public void addApp(ModelAppList modelAppList)
+    public long addApp(ModelAppList modelAppList)
     {
         ContentValues contentValues = new ContentValues();
         contentValues.put(MySqliteHelper.COLUMN_APP_NAME, modelAppList.name);
@@ -27,8 +27,12 @@ public class ItemDataSource {
         contentValues.put(MySqliteHelper.COLUMN_APP_NAMEDEV, modelAppList.nameDeveloper);
         contentValues.put(MySqliteHelper.COLUMN_APP_INSTALLED, modelAppList.installed);
         contentValues.put(MySqliteHelper.COLUMN_APP_UPDATED, modelAppList.updated);
-        db.insert(MySqliteHelper.TABLE_NAME,null,contentValues);
+
+        long resultInsert = db.insert(MySqliteHelper.TABLE_NAME,null,contentValues);
+
+        return resultInsert;
     }
+
 
     public void deleteApp(ModelAppList modelAppList)
     {

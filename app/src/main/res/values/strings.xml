@@ -8,4 +8,7 @@
     <string name="title_actAdd">Add app</string>
     <string name="txt_btnAddApp">Install</string>
     <string name="msgEmptyViews">Item can\\\'t be empty</string>
+    <string name="msgOk_AddAapp">Starting installation</string>
+    <string name="msgFail_AddAapp">Installation error</string>
+    <string name="msgOk_ExistsApp">The application is installed</string>
 </resources>
