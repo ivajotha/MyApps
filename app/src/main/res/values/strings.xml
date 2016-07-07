@@ -6,4 +6,6 @@
     <string name="hit_appDetails">Details app</string>
     <string name="hit_appUpdate">Update</string>
     <string name="title_actAdd">Add app</string>
+    <string name="txt_btnAddApp">Install</string>
+    <string name="msgEmptyViews">Item can\\\'t be empty</string>
 </resources>

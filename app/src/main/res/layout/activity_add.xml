@@ -51,8 +51,13 @@
             android:layout_height="wrap_content"
             android:id="@+id/actAdd_appUpdate"
             android:text="@string/hit_appUpdate"
-
             />
+
+        <Button
+            android:id="@+id/actAdd_btnAddApp"
+            android:text="@string/txt_btnAddApp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
 

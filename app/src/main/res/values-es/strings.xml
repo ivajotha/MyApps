@@ -7,5 +7,7 @@
     <string name="hit_appDetails">Detalles aplicación</string>
     <string name="hit_appUpdate">Actualizar</string>
     <string name="title_actAdd">Agregar Aplicación</string>
+    <string name="txt_btnAddApp">Instalar</string>
+    <string name="msgEmptyViews">Los campos no puede estar vacíos</string>
 
 </resources>
