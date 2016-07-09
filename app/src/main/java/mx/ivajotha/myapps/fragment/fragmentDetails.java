@@ -1,7 +1,10 @@
 package mx.ivajotha.myapps.fragment;
 
 import android.app.Fragment;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -13,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,6 +40,8 @@ public class FragmentDetails extends Fragment implements View.OnClickListener {
     private Button btnUninstall;
     private Button btnUpdOpen;
 
+    private ProgressBar progressbar;
+
     private ItemDataSource itemDataSource;
 
     public static FragmentDetails newInstance(ModelAppList modelAppList)
@@ -54,6 +60,25 @@ public class FragmentDetails extends Fragment implements View.OnClickListener {
 
         return fragmentDetails;
     }
+
+
+    private BroadcastReceiver broadcastUninstall = new BroadcastReceiver(){
+        String nota;
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            boolean key_installed = intent.getExtras().getBoolean("key_installed");
+            if(key_installed){
+                //nota = "SI_ESTA_DES";
+                progressbar.setVisibility(View.GONE);
+
+            }else{
+                //nota = "NO_ESTA_DES";
+            }
+
+            //Toast.makeText(getActivity(),nota, Toast.LENGTH_SHORT).show();
+
+        }
+    };
 
     @Nullable
     @Override
@@ -76,7 +101,8 @@ public class FragmentDetails extends Fragment implements View.OnClickListener {
         btnUninstall.setOnClickListener(this);
 
         btnUpdOpen = (Button)view.findViewById(R.id.fragDet_btnUpd_open);
-        btnUpdOpen.setOnClickListener(this);
+
+        progressbar = (ProgressBar) view.findViewById(R.id.fragDet_precess);
 
         isUpdate = getArguments().getInt("key_isUpdateApp");
         switch (isUpdate){
@@ -98,6 +124,7 @@ public class FragmentDetails extends Fragment implements View.OnClickListener {
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.fragDet_btnUninstall:
+                progressbar.setVisibility(View.VISIBLE);
                 getActivity().startService(new Intent(getActivity(), ServiceUninstall.class));
                 Toast.makeText(getActivity(),getResources().getString(R.string.hit_appStartingUnins), Toast.LENGTH_SHORT).show();
                 break;
@@ -120,4 +147,30 @@ public class FragmentDetails extends Fragment implements View.OnClickListener {
         }
 
     }
+
+    /** Methods Live activity**/
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction(ServiceUninstall.ACTION_SEND_UNINSTALLED);
+        getActivity().registerReceiver(broadcastUninstall,intentFilter);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+
+        getActivity().unregisterReceiver(broadcastUninstall);
+
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        getActivity().stopService(new Intent(getActivity(),ServiceUninstall.class));
+    }
+
 }

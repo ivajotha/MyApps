@@ -27,7 +27,7 @@ public class ServiceUninstall extends Service{
         public void run() {
             myhandler.postDelayed(myrunnable,1500);
             Intent intent = new Intent(ACTION_SEND_UNINSTALLED);
-            intent.putExtra("key_installed",false);
+            intent.putExtra("key_installed",true);
             sendBroadcast(intent);
         }
     };
