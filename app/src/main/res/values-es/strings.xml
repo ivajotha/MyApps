@@ -7,6 +7,7 @@
     <string name="hit_appNameDev">Nombre desarrollador</string>
     <string name="hit_appDetails">Detalles aplicación</string>
     <string name="hit_appUpdate">Actualizar</string>
+    <string name="hit_UnInstall">Desinstalar</string>
     <string name="title_actAdd">Agregar Aplicación</string>
     <string name="txtDeveloper">Desarrollador</string>
     <string name="txt_btnAddApp">Instalar</string>
@@ -21,4 +22,5 @@
     <string name="menu_app_titleEdit">Editar Applicatión</string>
     <string name="fragm_btnEdit">Editar</string>
     <string name="txt_btnOpen">Abrir</string>
+    <string name="title_serviceUdate">Actualizando</string>
 </resources>

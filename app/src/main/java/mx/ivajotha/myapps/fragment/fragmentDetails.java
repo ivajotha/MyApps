@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.Editable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,9 +14,11 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import mx.ivajotha.myapps.Model.ModelAppList;
 import mx.ivajotha.myapps.R;
+import mx.ivajotha.myapps.services.ServiceUpdate;
 import mx.ivajotha.myapps.sql.ItemDataSource;
 
 /**
@@ -27,7 +30,7 @@ public class FragmentDetails extends Fragment implements View.OnClickListener {
     private TextView nameDev;
     private TextView details;
     private ImageView resourceId;
-    private CheckBox isUpdate;
+    private Integer isUpdate;
 
     private Button btnOpenUrl;
     private Button btnUpdUnins;
@@ -70,6 +73,20 @@ public class FragmentDetails extends Fragment implements View.OnClickListener {
 
         btnOpenUrl = (Button)view.findViewById(R.id.fragDet_btnOpenUrl);
         btnOpenUrl.setOnClickListener(this);
+
+        btnUpdUnins = (Button)view.findViewById(R.id.fragDet_btnUpd_Unins);
+        btnUpdUnins.setOnClickListener(this);
+
+        isUpdate = getArguments().getInt("key_isUpdateApp");
+        switch (isUpdate){
+            case 1:
+                btnUpdUnins.setText(getResources().getString(R.string.hit_appUpdate));
+                break;
+
+            case 0:
+                btnUpdUnins.setText(getResources().getString(R.string.hit_UnInstall));
+                break;
+        }
 /*
         int idApp = getIntent().getExtras().getInt("key_idApp");
         String nameApp = getIntent().getExtras().getString("key_nameApp");
@@ -98,7 +115,21 @@ public class FragmentDetails extends Fragment implements View.OnClickListener {
                 Intent myintent = new Intent(Intent.ACTION_VIEW);
                 myintent.setData(Uri.parse("http://dcd.tic.unam.mx/moodlecad/"));
                 getActivity().startActivity(myintent);
-            break;
+                break;
+
+            case R.id.fragDet_btnUpd_Unins:
+                switch (isUpdate){
+                    case 1:
+                        getActivity().startService(new Intent(getActivity(), ServiceUpdate.class));
+                        Toast.makeText(getActivity(),"Click Actualizar", Toast.LENGTH_SHORT).show();
+                        break;
+
+                    case 0:
+                        //getActivity().startService(new Intent(getActivity(), ServiceUninstal.class));
+                        Toast.makeText(getActivity(),"Click Desintalar", Toast.LENGTH_SHORT).show();
+                        break;
+                }
+                break;
 
         }
 
