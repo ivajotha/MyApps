@@ -44,37 +44,23 @@ public class MainActivity extends AppCompatActivity {
         getListApps();
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int postion, long id) {
-                AdapterAppList adapterAppList = (AdapterAppList)parent.getAdapter();
-                ModelAppList modelAppList = adapterAppList.getItem(postion);
-
-                Intent intentApp = new Intent(getApplicationContext(),AppActivity.class);
-                startActivity(intentApp);
-
-
-            }
-        });
-
-/*        listViewApps.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //Accedemos a la información del elemento
-                AdapterItemList adapter = (AdapterItemList)parent.getAdapter();
-                ModelApp modelApp = adapter.getItem(position);
 
-                //Lanzamos la Activity de detalle y enviamos información del elemento a través de Extras
-                Intent intent = new Intent(getApplicationContext(),DetailActivity.class);
-                intent.putExtra(Keys.KEY_APP_ID,modelApp.id);
-                intent.putExtra(Keys.KEY_APP_DEVELOPER,modelApp.appDeveloperName);
-                intent.putExtra(Keys.KEY_APP_NAME,modelApp.appName);
-                intent.putExtra(Keys.KEY_APP_RESOURCEID,modelApp.appResourceId);
-                intent.putExtra(Keys.KEY_APP_UPDATED,modelApp.appUpdated);
-                intent.putExtra(Keys.KEY_APP_DETAIL,modelApp.appDetail);
-                startActivity(intent);
+                AdapterAppList adapterAppList = (AdapterAppList)parent.getAdapter();
+
+                ModelAppList modelAppList = adapterAppList.getItem(position);
+
+                Intent intentApp = new Intent(getApplicationContext(),AppActivity.class);
+                intentApp.putExtra("key_idApp", modelAppList.id);
+                intentApp.putExtra("key_nameApp", modelAppList.name);
+                intentApp.putExtra("key_detailsApp", modelAppList.details);
+                intentApp.putExtra("key_nameDevApp", modelAppList.nameDeveloper);
+                intentApp.putExtra("key_rescIdApp", modelAppList.resourceId);
+                intentApp.putExtra("key_isUpdateApp", modelAppList.updated);
+                startActivity(intentApp);
             }
-        }); */
+        });
 
     }
 
@@ -97,8 +83,7 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()){
             case R.id.menu_main_add:
                 startActivityForResult(new Intent(getApplicationContext(), AddActivity.class),REQUEST_APP_ADD);
-                //return true;
-                break;
+                return true;
         }
         return super.onOptionsItemSelected(item);
     }

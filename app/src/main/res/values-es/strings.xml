@@ -18,4 +18,5 @@
     <string name="msgStatusInstall">Instada</string>
     <string name="msgStatusUpdate">Actualizada</string>
     <string name="menu_app_titleEdit">Editar Applicatión</string>
+    <string name="fragm_btnEdit">Editar</string>
 </resources>

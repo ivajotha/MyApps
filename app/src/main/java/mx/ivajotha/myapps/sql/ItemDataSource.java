@@ -53,12 +53,14 @@ public class ItemDataSource {
         while (cursor.moveToNext()) {
             int id_app = cursor.getInt(cursor.getColumnIndexOrThrow(MySqliteHelper.COLUMN_ID));
             String name_app =cursor.getString(cursor.getColumnIndexOrThrow(MySqliteHelper.COLUMN_APP_NAME));
+            String details_app = cursor.getString(cursor.getColumnIndexOrThrow(MySqliteHelper.COLUMN_APP_DETAILS));
             String namedev_app = cursor.getString(cursor.getColumnIndexOrThrow(MySqliteHelper.COLUMN_APP_NAMEDEV));
             int resId_app = cursor.getInt(cursor.getColumnIndexOrThrow(MySqliteHelper.COLUMN_APP_RESOURCE));
             int isUdpate_app = cursor.getInt(cursor.getColumnIndexOrThrow(MySqliteHelper.COLUMN_APP_UPDATED));
             ModelAppList modelAppList = new ModelAppList();
             modelAppList.id = id_app;
             modelAppList.name = name_app;
+            modelAppList.details = details_app;
             modelAppList.nameDeveloper = namedev_app;
             modelAppList.resourceId = resId_app;
             modelAppList.updated = isUdpate_app;

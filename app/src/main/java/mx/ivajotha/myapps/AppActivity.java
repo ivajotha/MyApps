@@ -8,6 +8,9 @@ import android.view.MenuItem;
 import android.widget.CheckBox;
 import android.widget.EditText;
 
+import mx.ivajotha.myapps.Model.ModelAppList;
+import mx.ivajotha.myapps.fragment.FragmentDetails;
+
 /**
  * Created by jonathan on 07/07/16.
  */
@@ -24,8 +27,28 @@ public class AppActivity extends AppCompatActivity{
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
-    }
 
+        int idApp = getIntent().getExtras().getInt("key_idApp");
+        String nameApp = getIntent().getExtras().getString("key_nameApp");
+        String detailsApp = getIntent().getExtras().getString("key_detailsApp");
+        String nameDevApp = getIntent().getExtras().getString("key_nameDevApp");
+        int rescIdApp = getIntent().getExtras().getInt("key_rescIdApp");
+        int isUpdateApp = getIntent().getExtras().getInt("key_isUpdateApp");
+        Boolean instaledApp = true;
+
+        ModelAppList modelAppList = new ModelAppList();
+        modelAppList.id = idApp;
+        modelAppList.name = nameApp;
+        modelAppList.details = detailsApp;
+        modelAppList.nameDeveloper = nameDevApp;
+        modelAppList.resourceId = rescIdApp;
+        modelAppList.updated = isUpdateApp;
+        modelAppList.installed =  instaledApp;
+
+        FragmentDetails fragmentDetail = FragmentDetails.newInstance(modelAppList);
+        getFragmentManager().beginTransaction().replace(R.id.fragmentApp,fragmentDetail).commit();
+
+    }
 
     /** Methods Toolbar**/
     @Override
