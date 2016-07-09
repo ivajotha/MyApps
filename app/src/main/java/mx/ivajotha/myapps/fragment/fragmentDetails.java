@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import mx.ivajotha.myapps.Model.ModelAppList;
 import mx.ivajotha.myapps.R;
+import mx.ivajotha.myapps.services.ServiceUninstall;
 import mx.ivajotha.myapps.services.ServiceUpdate;
 import mx.ivajotha.myapps.sql.ItemDataSource;
 
@@ -32,8 +33,8 @@ public class FragmentDetails extends Fragment implements View.OnClickListener {
     private ImageView resourceId;
     private Integer isUpdate;
 
-    private Button btnOpenUrl;
-    private Button btnUpdUnins;
+    private Button btnUninstall;
+    private Button btnUpdOpen;
 
     private ItemDataSource itemDataSource;
 
@@ -71,39 +72,24 @@ public class FragmentDetails extends Fragment implements View.OnClickListener {
         resourceId = (ImageView) view.findViewById(R.id.fragDet_appImg);
         resourceId.setImageResource(getArguments().getInt("key_rescIdApp"));
 
-        btnOpenUrl = (Button)view.findViewById(R.id.fragDet_btnOpenUrl);
-        btnOpenUrl.setOnClickListener(this);
+        btnUninstall = (Button)view.findViewById(R.id.fragDet_btnUninstall);
+        btnUninstall.setOnClickListener(this);
 
-        btnUpdUnins = (Button)view.findViewById(R.id.fragDet_btnUpd_Unins);
-        btnUpdUnins.setOnClickListener(this);
+        btnUpdOpen = (Button)view.findViewById(R.id.fragDet_btnUpd_open);
+        btnUpdOpen.setOnClickListener(this);
 
         isUpdate = getArguments().getInt("key_isUpdateApp");
         switch (isUpdate){
-            case 1:
-                btnUpdUnins.setText(getResources().getString(R.string.hit_appUpdate));
-                break;
-
             case 0:
-                btnUpdUnins.setText(getResources().getString(R.string.hit_UnInstall));
+                btnUpdOpen.setText(getResources().getString(R.string.hit_appUpdate));
                 break;
+
+            case 1:
+                btnUpdOpen.setText(getResources().getString(R.string.hit_appOpen));
+                break;
+
+
         }
-/*
-        int idApp = getIntent().getExtras().getInt("key_idApp");
-        String nameApp = getIntent().getExtras().getString("key_nameApp");
-        String nameDevApp = getIntent().getExtras().getString("key_nameDevApp");
-        String detailsApp = getIntent().getExtras().getString("key_detailsApp");
-        int rescIdApp = getIntent().getExtras().getInt("key_rescIdApp");
-        int isUpdateApp = getIntent().getExtras().getInt("key_isUpdateApp");
-*/
-
-
-/*      bundle.putInt(Keys.KEY_APP_ID, modelApp.id);
-        bundle.putString(Keys.KEY_APP_DEVELOPER, modelApp.appDeveloperName);
-        bundle.putString(Keys.KEY_APP_NAME, modelApp.appName);
-        bundle.putInt(Keys.KEY_APP_RESOURCEID, modelApp.appResourceId);
-        bundle.putInt(Keys.KEY_APP_UPDATED, modelApp.appUpdated);
-        bundle.putString(Keys.KEY_APP_DETAIL, modelApp.appDetail);
-*/
 
         return view;
     }
@@ -111,22 +97,22 @@ public class FragmentDetails extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         switch (view.getId()){
-            case R.id.fragDet_btnOpenUrl :
-                Intent myintent = new Intent(Intent.ACTION_VIEW);
-                myintent.setData(Uri.parse("http://dcd.tic.unam.mx/moodlecad/"));
-                getActivity().startActivity(myintent);
+            case R.id.fragDet_btnUninstall:
+                getActivity().startService(new Intent(getActivity(), ServiceUninstall.class));
+                Toast.makeText(getActivity(),getResources().getString(R.string.hit_appStartingUnins), Toast.LENGTH_SHORT).show();
                 break;
 
-            case R.id.fragDet_btnUpd_Unins:
+            case R.id.fragDet_btnUpd_open:
                 switch (isUpdate){
-                    case 1:
+                    case 0:
                         getActivity().startService(new Intent(getActivity(), ServiceUpdate.class));
-                        Toast.makeText(getActivity(),"Click Actualizar", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(),getResources().getString(R.string.hit_appStartingUpd), Toast.LENGTH_SHORT).show();
                         break;
 
-                    case 0:
-                        //getActivity().startService(new Intent(getActivity(), ServiceUninstal.class));
-                        Toast.makeText(getActivity(),"Click Desintalar", Toast.LENGTH_SHORT).show();
+                    case 1:
+                        Intent myintent = new Intent(Intent.ACTION_VIEW);
+                        myintent.setData(Uri.parse("http://dcd.tic.unam.mx/moodlecad/"));
+                        getActivity().startActivity(myintent);
                         break;
                 }
                 break;

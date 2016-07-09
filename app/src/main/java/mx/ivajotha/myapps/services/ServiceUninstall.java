@@ -1,7 +1,6 @@
 package mx.ivajotha.myapps.services;
 
 import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
@@ -13,24 +12,22 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.NotificationCompat;
 
 import mx.ivajotha.myapps.R;
-import mx.ivajotha.myapps.fragment.FragmentDetails;
 
 /**
  * Created by jonathan on 09/07/16.
  */
-public class ServiceUpdate extends Service{
-
-    public static final String ACTION_SEND_UPDATED = "mx.ivajotha.myapps.ACTION_SEND_UPDATED";
+public class ServiceUninstall extends Service{
+    public static final String ACTION_SEND_UNINSTALLED = "mx.ivajotha.myapps.ACTION_SEND_UNINSTALLED";
     private MyAsyncTask myAsyncTask;
-    private static final int id = 0;
+    private static final int id = 1;
 
     private Handler myhandler = new Handler();
     private Runnable myrunnable = new Runnable() {
         @Override
         public void run() {
             myhandler.postDelayed(myrunnable,1500);
-            Intent intent = new Intent(ACTION_SEND_UPDATED);
-            intent.putExtra("key_update",false);
+            Intent intent = new Intent(ACTION_SEND_UNINSTALLED);
+            intent.putExtra("key_installed",false);
             sendBroadcast(intent);
         }
     };
@@ -75,9 +72,9 @@ public class ServiceUpdate extends Service{
 
             mNotif = new NotificationCompat
                     .Builder(getApplicationContext())
-                    .setContentTitle(getString(R.string.title_serviceUdate))
-                    .setContentText(getString(R.string.desc_serviceUdate))
-                    .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.ic_action_autorenew))
+                    .setContentTitle(getString(R.string.title_serviceUninstall))
+                    .setContentText(getString(R.string.desc_serviceUninstall))
+                    .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.ic_action_delete))
                     .setSmallIcon(android.R.drawable.ic_dialog_email);
         }
 
@@ -109,7 +106,7 @@ public class ServiceUpdate extends Service{
             if(result)
             {
                 mNotif.setProgress(0,0,false);
-                mNotif.setContentTitle(getString(R.string.title_serviceUdate_ok));
+                mNotif.setContentTitle(getString(R.string.title_serviceUninstall_ok));
                 mNotif.setContentText(getString(R.string.desc_serviceUdate_ok));
                 mNotif.setAutoCancel(true);
                 NotificationManager manager  = (NotificationManager)

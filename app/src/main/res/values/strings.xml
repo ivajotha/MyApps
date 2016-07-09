@@ -22,4 +22,14 @@
     <string name="fragm_btnEdit">Edit app</string>
     <string name="txt_btnOpen">Open</string>
     <string name="title_serviceUdate">Updating</string>
+    <string name="desc_serviceUdate">Downloading update</string>
+    <string name="title_serviceUdate_ok">Update completed</string>
+    <string name="desc_serviceUdate_ok">100%</string>
+    <string name="txt_btnUnistall">Uninstall</string>
+    <string name="hit_appOpen">Open</string>
+    <string name="hit_appStartingUpd">Starting Update</string>
+    <string name="hit_appStartingUnins">Starting Uninstall</string>
+    <string name="title_serviceUninstall">Uninstalling</string>
+    <string name="desc_serviceUninstall">Deleting files</string>
+    <string name="title_serviceUninstall_ok">Uninstall completed</string>
 </resources>

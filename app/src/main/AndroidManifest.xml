@@ -25,6 +25,7 @@
             android:theme="@style/AppTheme.NoActionBar"/>
 
         <service android:name=".services.ServiceUpdate"></service>
+        <service android:name=".services.ServiceUninstall"></service>
     </application>
 
 </manifest>

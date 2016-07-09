@@ -63,21 +63,39 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:layout_marginBottom="@dimen/activity_horizontal_margin">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:src="@drawable/detalles_icons"
+            android:contentDescription="iconos" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/fragDet_btnUpd_Unins"
+            android:id="@+id/fragDet_btnUninstall"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="2dp"
+            android:text="@string/txt_btnUnistall"
+            android:layout_weight="1"/>
+
+        <Button
+            android:id="@+id/fragDet_btnUpd_open"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
             />
-        <Button
-            android:id="@+id/fragDet_btnOpenUrl"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_margin="2dp"
-            android:text="@string/txt_btnOpen"
-            android:layout_weight="1"/>
+
 
     </LinearLayout>
 </LinearLayout>
