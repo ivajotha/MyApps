@@ -8,6 +8,7 @@
     <string name="hit_appDetails">Detalles aplicación</string>
     <string name="hit_appUpdate">Actualizar</string>
     <string name="title_actAdd">Agregar Aplicación</string>
+    <string name="txtDeveloper">Desarrollador</string>
     <string name="txt_btnAddApp">Instalar</string>
     <string name="msgEmptyViews">Los campos no puede estar vacíos</string>
     <string name="msgOk_AddAapp">Iniciando Instalación</string>
@@ -19,4 +20,5 @@
     <string name="msgStatusUpdate">Actualizada</string>
     <string name="menu_app_titleEdit">Editar Applicatión</string>
     <string name="fragm_btnEdit">Editar</string>
+    <string name="txt_btnOpen">Abrir</string>
 </resources>

@@ -4,7 +4,7 @@
     android:id="@+id/mytoolbar"
     app:elevation="16dp"
     android:theme="@style/AppTheme.AppBarOverlay"
-    android:background="?colorPrimary"
+    android:background="@color/statusApp"
     android:layout_width="match_parent"
     app:title="@string/app_name"
     app:popupTheme="@style/AppTheme.PopupOverlay"

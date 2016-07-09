@@ -2,13 +2,16 @@ package mx.ivajotha.myapps.fragment;
 
 import android.app.Fragment;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.Editable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import mx.ivajotha.myapps.Model.ModelAppList;
@@ -18,13 +21,16 @@ import mx.ivajotha.myapps.sql.ItemDataSource;
 /**
  * Created by jonathan on 07/07/16.
  */
-public class FragmentDetails extends Fragment{
+public class FragmentDetails extends Fragment implements View.OnClickListener {
 
     private TextView appName;
     private TextView nameDev;
     private TextView details;
-    private Integer resourceId;
+    private ImageView resourceId;
     private CheckBox isUpdate;
+
+    private Button btnOpenUrl;
+    private Button btnUpdUnins;
 
     private ItemDataSource itemDataSource;
 
@@ -59,6 +65,11 @@ public class FragmentDetails extends Fragment{
         details = (TextView) view.findViewById(R.id.fragDet_appDetails);
         details.setText(getArguments().getString("key_detailsApp"));
 
+        resourceId = (ImageView) view.findViewById(R.id.fragDet_appImg);
+        resourceId.setImageResource(getArguments().getInt("key_rescIdApp"));
+
+        btnOpenUrl = (Button)view.findViewById(R.id.fragDet_btnOpenUrl);
+        btnOpenUrl.setOnClickListener(this);
 /*
         int idApp = getIntent().getExtras().getInt("key_idApp");
         String nameApp = getIntent().getExtras().getString("key_nameApp");
@@ -80,4 +91,16 @@ public class FragmentDetails extends Fragment{
         return view;
     }
 
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.fragDet_btnOpenUrl :
+                Intent myintent = new Intent(Intent.ACTION_VIEW);
+                myintent.setData(Uri.parse("http://dcd.tic.unam.mx/moodlecad/"));
+                getActivity().startActivity(myintent);
+            break;
+
+        }
+
+    }
 }

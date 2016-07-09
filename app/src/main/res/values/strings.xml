@@ -7,6 +7,7 @@
     <string name="hit_appDetails">Details app</string>
     <string name="hit_appUpdate">Update</string>
     <string name="title_actAdd">Add app</string>
+    <string name="txtDeveloper">Developer</string>
     <string name="txt_btnAddApp">Install</string>
     <string name="msgEmptyViews">Item can\\\'t be empty</string>
     <string name="msgOk_AddAapp">Starting installation</string>
@@ -18,4 +19,5 @@
     <string name="msgStatusUpdate">Updated</string>
     <string name="menu_app_titleEdit">Edit app</string>
     <string name="fragm_btnEdit">Edit app</string>
+    <string name="txt_btnOpen">Open</string>
 </resources>

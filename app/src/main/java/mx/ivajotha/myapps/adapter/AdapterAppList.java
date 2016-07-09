@@ -32,7 +32,6 @@ public class AdapterAppList extends ArrayAdapter<ModelAppList>{
         TextView nameApp = (TextView) convertView.findViewById(R.id.row_appName);
         TextView nameDevApp = (TextView) convertView.findViewById(R.id.row_appNameDev);
         TextView detailsApp = (TextView) convertView.findViewById(R.id.row_appDetails);
-        ImageView imgApp = (ImageView) convertView.findViewById(R.id.row_appImg);
         TextView statusApp = (TextView)convertView.findViewById(R.id.row_appStatus);
 
 
@@ -40,7 +39,6 @@ public class AdapterAppList extends ArrayAdapter<ModelAppList>{
         nameApp.setText(modelAppList.name.toUpperCase());
         nameDevApp.setText(modelAppList.nameDeveloper);
         detailsApp.setText(modelAppList.details);
-        imgApp.setImageResource(modelAppList.resourceId);
         statusApp.setText((modelAppList.updated==0)? getContext().getString(R.string.msgStatusInstall):getContext().getString(R.string.msgStatusUpdate));
         return convertView;
 

@@ -28,13 +28,21 @@ public class AppActivity extends AppCompatActivity{
         getSupportActionBar().setHomeButtonEnabled(true);
 
 
+
         int idApp = getIntent().getExtras().getInt("key_idApp");
         String nameApp = getIntent().getExtras().getString("key_nameApp");
+
         String detailsApp = getIntent().getExtras().getString("key_detailsApp");
         String nameDevApp = getIntent().getExtras().getString("key_nameDevApp");
         int rescIdApp = getIntent().getExtras().getInt("key_rescIdApp");
         int isUpdateApp = getIntent().getExtras().getInt("key_isUpdateApp");
         Boolean instaledApp = true;
+
+        /* Set Title Toolbar*/
+        String fielRequired = getResources().getString(R.string.hit_appDetails);
+        String titleToobar = fielRequired + ": " + nameApp;
+        getSupportActionBar().setTitle(titleToobar.toUpperCase());
+
 
         ModelAppList modelAppList = new ModelAppList();
         modelAppList.id = idApp;
