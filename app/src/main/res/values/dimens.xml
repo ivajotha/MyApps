@@ -4,4 +4,7 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="margin_Bottom">40dp</dimen>
     <dimen name="titleInterSize">18sp</dimen>
+    <dimen name="sizeTextApp">15sp</dimen>
+    <dimen name="sizeTextTApp">20sp</dimen>
+    <dimen name="sizeTextMApp">13sp</dimen>
 </resources>

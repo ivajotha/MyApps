@@ -48,9 +48,7 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 AdapterAppList adapterAppList = (AdapterAppList)parent.getAdapter();
-
                 ModelAppList modelAppList = adapterAppList.getItem(position);
-
                 Intent intentApp = new Intent(getApplicationContext(),AppActivity.class);
                 intentApp.putExtra("key_idApp", modelAppList.id);
                 intentApp.putExtra("key_nameApp", modelAppList.name);
