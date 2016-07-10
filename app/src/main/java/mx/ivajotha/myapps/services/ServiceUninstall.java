@@ -12,14 +12,17 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.NotificationCompat;
 
 import mx.ivajotha.myapps.R;
+import mx.ivajotha.myapps.sql.ItemDataSource;
 
 /**
  * Created by jonathan on 09/07/16.
  */
 public class ServiceUninstall extends Service{
-    public static final String ACTION_SEND_UNINSTALLED = "mx.ivajotha.myapps.ACTION_SEND_UNINSTALLED";
+    public static final String ACTION_SEND_UNINSTALLED = "mx.ivajotha.myapps.SEND_UNINSTALLED";
     private MyAsyncTask myAsyncTask;
     private static final int id = 1;
+    private Integer idApp;
+    private ItemDataSource itemDataSource;
 
     private Handler myhandler = new Handler();
     private Runnable myrunnable = new Runnable() {
@@ -31,6 +34,7 @@ public class ServiceUninstall extends Service{
             sendBroadcast(intent);
         }
     };
+
 
     @Nullable
     @Override
@@ -53,6 +57,7 @@ public class ServiceUninstall extends Service{
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+
 
         if(myAsyncTask==null)
         {
@@ -80,6 +85,8 @@ public class ServiceUninstall extends Service{
 
         @Override
         protected Boolean doInBackground(Integer... params) {
+
+            //itemDataSource
             for (int i=0;i<6;i++)
             {
                 publishProgress(i);

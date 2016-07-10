@@ -1,5 +1,9 @@
 package mx.ivajotha.myapps;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -10,6 +14,7 @@ import android.widget.EditText;
 
 import mx.ivajotha.myapps.Model.ModelAppList;
 import mx.ivajotha.myapps.fragment.FragmentDetails;
+import mx.ivajotha.myapps.services.ServiceUninstall;
 
 /**
  * Created by jonathan on 07/07/16.
@@ -37,7 +42,6 @@ public class AppActivity extends AppCompatActivity{
         int rescIdApp = getIntent().getExtras().getInt("key_rescIdApp");
         int isUpdateApp = getIntent().getExtras().getInt("key_isUpdateApp");
         Boolean instaledApp = true;
-
         /* Set Title Toolbar*/
         String fielRequired = getResources().getString(R.string.hit_appDetails);
         String titleToobar = fielRequired + ": " + nameApp;
@@ -74,4 +78,5 @@ public class AppActivity extends AppCompatActivity{
         }
         return super.onOptionsItemSelected(item);
     }
+
 }
