@@ -38,21 +38,21 @@ public class FragmentDetails extends Fragment implements View.OnClickListener {
     private TextView details;
     private ImageView resourceId;
     private Integer isUpdate;
-
     private static Integer idApp;
-
     private Button btnUninstall;
     private Button btnUpdOpen;
 
     private ProgressBar progressbar;
 
-    private ItemDataSource itemDataSource;
+    //private ItemDataSource itemDataSource;
+
 
     public static FragmentDetails newInstance(ModelAppList modelAppList)
     {
         FragmentDetails fragmentDetails = new FragmentDetails();
         Bundle bundle = new Bundle();
 
+        idApp = modelAppList.id;
         bundle.putInt("key_idApp", modelAppList.id);
         bundle.putString("key_nameApp", modelAppList.name);
         bundle.putString("key_nameDevApp", modelAppList.nameDeveloper);
@@ -72,8 +72,10 @@ public class FragmentDetails extends Fragment implements View.OnClickListener {
             boolean key_installed = intent.getExtras().getBoolean("key_installed");
             if(key_installed){
                 btnUninstall.setVisibility(View.INVISIBLE);
+                btnUpdOpen.setVisibility(View.INVISIBLE);
                 progressbar.setVisibility(View.GONE);
-
+                //itemDataSource.deleteApp(idApp);
+                getActivity().finish();
             }
         }
     };
@@ -82,6 +84,8 @@ public class FragmentDetails extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_details,container,false);
+
+        //itemDataSource = new ItemDataSource(getActivity());
 
         appName = (TextView) view.findViewById(R.id.fragDet_appName);
         appName.setText(getArguments().getString("key_nameApp"));
@@ -124,18 +128,17 @@ public class FragmentDetails extends Fragment implements View.OnClickListener {
                 //progressbar.setVisibility(View.VISIBLE);
                 //getActivity().startService(new Intent(getActivity(), ServiceUninstall.class));
                 //Toast.makeText(getActivity(),getResources().getString(R.string.hit_appStartingUnins), Toast.LENGTH_SHORT).show();
-                /* Dialog Notificaction  */
+
+                /* Dialog Notification  */
                 new AlertDialog.Builder(getActivity())
                         .setTitle(R.string.txt_btnUnistall)
                         .setMessage(R.string.txt_dialogUnistall)
                         .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                //progressbar.setVisibility(View.VISIBLE);
-                                //getActivity().startService(new Intent(getActivity(), ServiceUninstall.class));
-                                Intent servicesIntent = new Intent(getActivity(),ServiceUninstall.class);
-                                servicesIntent.putExtra("key_id",getArguments().getInt("key_idApp"));
-                                getActivity().startService(servicesIntent);
+                                progressbar.setVisibility(View.VISIBLE);
+
+                                getActivity().startService(new Intent(getActivity(), ServiceUninstall.class).putExtra("key_id",getArguments().getInt("key_idApp")));
                             }})
                         .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
                             @Override
@@ -177,6 +180,7 @@ public class FragmentDetails extends Fragment implements View.OnClickListener {
 
     @Override
     public void onPause() {
+
         super.onPause();
         getActivity().unregisterReceiver(broadcastUninstall);
 

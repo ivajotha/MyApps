@@ -111,8 +111,10 @@ public class MainActivity extends AppCompatActivity {
         if(modelAppLists.size() > 0 ){
             textView.setVisibility(View.INVISIBLE);
             listView.setAdapter(new AdapterAppList(getApplicationContext(),modelAppLists));
+            listView.setVisibility(View.VISIBLE);
         }else{
             textView.setVisibility(View.VISIBLE);
+            listView.setVisibility(View.INVISIBLE);
         }
     }
 

@@ -2,14 +2,17 @@ package mx.ivajotha.myapps.services;
 
 import android.app.NotificationManager;
 import android.app.Service;
+import android.content.ClipData;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.support.v4.app.NotificationCompat;
+import android.util.Log;
 
 import mx.ivajotha.myapps.R;
 import mx.ivajotha.myapps.sql.ItemDataSource;
@@ -21,8 +24,11 @@ public class ServiceUninstall extends Service{
     public static final String ACTION_SEND_UNINSTALLED = "mx.ivajotha.myapps.SEND_UNINSTALLED";
     private MyAsyncTask myAsyncTask;
     private static final int id = 1;
-    private Integer idApp;
+
+
+    private int id_app;
     private ItemDataSource itemDataSource;
+
 
     private Handler myhandler = new Handler();
     private Runnable myrunnable = new Runnable() {
@@ -58,6 +64,14 @@ public class ServiceUninstall extends Service{
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
 
+        itemDataSource = new ItemDataSource(getApplicationContext());
+
+        if(intent.getExtras()!=null && intent.getExtras().containsKey("key_id")){
+
+            id_app = intent.getExtras().getInt("key_id");
+            itemDataSource.deleteApp(id_app);
+
+        }
 
         if(myAsyncTask==null)
         {
@@ -86,7 +100,6 @@ public class ServiceUninstall extends Service{
         @Override
         protected Boolean doInBackground(Integer... params) {
 
-            //itemDataSource
             for (int i=0;i<6;i++)
             {
                 publishProgress(i);
@@ -123,5 +136,6 @@ public class ServiceUninstall extends Service{
             myAsyncTask=null;
             stopSelf();
         }
+
     }
 }

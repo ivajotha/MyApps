@@ -38,10 +38,10 @@ public class ItemDataSource {
     }
 
 
-    public void deleteApp(ModelAppList modelAppList)
+    public void deleteApp(Integer IdApp)
     {
         db.delete(MySqliteHelper.TABLE_NAME,MySqliteHelper.COLUMN_ID+"=?",
-                new String[]{String.valueOf(modelAppList.id)});
+                new String[]{String.valueOf(IdApp)});
     }
 
     public List<ModelAppList> getAllApps(){

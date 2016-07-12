@@ -32,8 +32,6 @@ public class AppActivity extends AppCompatActivity{
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
-
-
         int idApp = getIntent().getExtras().getInt("key_idApp");
         String nameApp = getIntent().getExtras().getString("key_nameApp");
 
