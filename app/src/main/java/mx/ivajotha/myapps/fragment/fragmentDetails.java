@@ -81,6 +81,19 @@ public class FragmentDetails extends Fragment implements View.OnClickListener {
     };
 
 
+    private BroadcastReceiver broadcastUpdate = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            boolean key_update = intent.getExtras().getBoolean("key_update");
+            if (key_update){
+                Integer updated_ = 1;
+                isUpdate = updated_;
+                progressbar.setVisibility(View.GONE);
+                btnUpdOpen.setText(getResources().getString(R.string.hit_appOpen));
+
+            }
+        }
+    };
 
 
 
@@ -182,6 +195,10 @@ public class FragmentDetails extends Fragment implements View.OnClickListener {
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction(ServiceUninstall.ACTION_SEND_UNINSTALLED);
         getActivity().registerReceiver(broadcastUninstall,intentFilter);
+
+        IntentFilter intentFilter_ = new IntentFilter();
+        intentFilter_.addAction(ServiceUpdate.ACTION_SEND_UPDATED);
+        getActivity().registerReceiver(broadcastUpdate,intentFilter_);
     }
 
     @Override
@@ -189,6 +206,7 @@ public class FragmentDetails extends Fragment implements View.OnClickListener {
 
         super.onPause();
         getActivity().unregisterReceiver(broadcastUninstall);
+        getActivity().unregisterReceiver(broadcastUpdate);
 
     }
 
@@ -196,6 +214,7 @@ public class FragmentDetails extends Fragment implements View.OnClickListener {
     public void onDestroy() {
         super.onDestroy();
         getActivity().stopService(new Intent(getActivity(),ServiceUninstall.class));
+        getActivity().stopService(new Intent(getActivity(),ServiceUpdate.class));
     }
 
 }
