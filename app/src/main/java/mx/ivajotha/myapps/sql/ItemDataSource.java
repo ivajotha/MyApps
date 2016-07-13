@@ -2,6 +2,7 @@ package mx.ivajotha.myapps.sql;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
@@ -42,6 +43,17 @@ public class ItemDataSource {
     {
         db.delete(MySqliteHelper.TABLE_NAME,MySqliteHelper.COLUMN_ID+"=?",
                 new String[]{String.valueOf(IdApp)});
+    }
+
+    public void updateApp(Integer IdApp){
+
+        Integer  updated = 1;
+
+        ContentValues cv = new ContentValues();
+        cv.put(MySqliteHelper.COLUMN_APP_UPDATED,updated);
+        String selection = "_id="+IdApp;
+        db.update(MySqliteHelper.TABLE_NAME, cv, selection, null);
+
     }
 
     public List<ModelAppList> getAllApps(){

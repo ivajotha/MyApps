@@ -14,15 +14,19 @@ import android.support.v4.app.NotificationCompat;
 
 import mx.ivajotha.myapps.R;
 import mx.ivajotha.myapps.fragment.FragmentDetails;
+import mx.ivajotha.myapps.sql.ItemDataSource;
 
 /**
  * Created by jonathan on 09/07/16.
  */
 public class ServiceUpdate extends Service{
 
-    public static final String ACTION_SEND_UPDATED = "mx.ivajotha.myapps.ACTION_SEND_UPDATED";
+    public static final String ACTION_SEND_UPDATED = "mx.ivajotha.myapps.SEND_UPDATED";
     private MyAsyncTask myAsyncTask;
     private static final int id = 0;
+
+    private int id_app;
+    private ItemDataSource itemDataSource;
 
     private Handler myhandler = new Handler();
     private Runnable myrunnable = new Runnable() {
@@ -30,7 +34,7 @@ public class ServiceUpdate extends Service{
         public void run() {
             myhandler.postDelayed(myrunnable,1500);
             Intent intent = new Intent(ACTION_SEND_UPDATED);
-            intent.putExtra("key_update",false);
+            intent.putExtra("key_update",true);
             sendBroadcast(intent);
         }
     };
@@ -56,6 +60,14 @@ public class ServiceUpdate extends Service{
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+
+        itemDataSource = new ItemDataSource(getApplicationContext());
+
+        if(intent.getExtras()!=null && intent.getExtras().containsKey("key_id")){
+
+            id_app = intent.getExtras().getInt("key_id");
+            itemDataSource.updateApp(id_app);
+        }
 
         if(myAsyncTask==null)
         {

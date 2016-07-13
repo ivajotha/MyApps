@@ -80,6 +80,10 @@ public class FragmentDetails extends Fragment implements View.OnClickListener {
         }
     };
 
+
+
+
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -152,7 +156,9 @@ public class FragmentDetails extends Fragment implements View.OnClickListener {
             case R.id.fragDet_btnUpd_open:
                 switch (isUpdate){
                     case 0:
-                        getActivity().startService(new Intent(getActivity(), ServiceUpdate.class));
+                        progressbar.setVisibility(View.VISIBLE);
+                        //getActivity().startService(new Intent(getActivity(), ServiceUpdate.class));
+                        getActivity().startService(new Intent(getActivity(), ServiceUpdate.class).putExtra("key_id",getArguments().getInt("key_idApp")));
                         Toast.makeText(getActivity(),getResources().getString(R.string.hit_appStartingUpd), Toast.LENGTH_SHORT).show();
                         break;
 
