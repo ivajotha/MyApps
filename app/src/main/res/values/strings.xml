@@ -5,6 +5,7 @@
     <string name="hit_appName">Name app</string>
     <string name="hit_appNameDev">Name developer</string>
     <string name="hit_appDetails">Details app</string>
+    <string name="hit_appEdit">Edit app</string>
     <string name="hit_appUpdate">Update</string>
     <string name="hit_UnInstall">Uninstalled</string>
     <string name="title_actAdd">Add app</string>

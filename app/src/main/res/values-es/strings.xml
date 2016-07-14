@@ -6,6 +6,7 @@
     <string name="hit_appName">Nombre aplicación</string>
     <string name="hit_appNameDev">Nombre desarrollador</string>
     <string name="hit_appDetails">Detalles aplicación</string>
+    <string name="hit_appEdit">Editar aplicación</string>
     <string name="hit_appUpdate">Actualizar</string>
     <string name="hit_UnInstall">Desinstalar</string>
     <string name="title_actAdd">Agregar Aplicación</string>
