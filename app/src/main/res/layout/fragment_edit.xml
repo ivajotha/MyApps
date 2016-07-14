@@ -20,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/actEdit_appName"
-            android:text="Cargando"
+            android:hint="@string/hit_appName"
             android:singleLine="true"
             android:lines="1"
             />
@@ -29,6 +29,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/actEdit_appNameDev"
+            android:hint="@string/hit_appNameDev"
             android:singleLine="true"
             android:lines="1"
             />
@@ -37,6 +38,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/actEdit_appDetails"
+            android:hint="@string/hit_appDetails"
             android:lines="5"
             android:inputType="textMultiLine"
             android:scrollHorizontally="true"
@@ -50,7 +52,7 @@
             />
 
         <Button
-            android:id="@+id/actAdd_btnAddApp"
+            android:id="@+id/actEdit_btnSaveEdit"
             android:text="@string/txt_btnEditApp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />

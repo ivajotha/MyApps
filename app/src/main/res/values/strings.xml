@@ -35,4 +35,6 @@
     <string name="title_serviceUninstall_ok">Uninstall completed</string>
     <string name="txt_dialogUnistall">Do you want to uninstall the application?</string>
     <string name="txt_btnEditApp">Save changes</string>
+    <string name="msgOk_EditApp">Updated information</string>
+    <string name="msgFail_EditApp">Error in updating information</string>
 </resources>

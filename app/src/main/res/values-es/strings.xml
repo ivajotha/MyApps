@@ -36,4 +36,6 @@
     <string name="title_serviceUninstall_ok">Se ha desinstalado</string>
     <string name="txt_dialogUnistall">¿Desea desinstalar la aplicación?</string>
     <string name="txt_btnEditApp">Guardar cambios</string>
+    <string name="msgOk_EditApp">Información actualizada</string>
+    <string name="msgFail_EditApp">Error en la actualización</string>
 </resources>

@@ -82,7 +82,23 @@ public class ItemDataSource {
         return  modelAppLists;
     }
 
+    public long updateDataApp(ModelAppList modelAppList) {
 
+        ContentValues cv = new ContentValues();
+        cv.put(MySqliteHelper.COLUMN_APP_UPDATED,modelAppList.updated);
+        cv.put(MySqliteHelper.COLUMN_APP_NAME,modelAppList.name);
+        cv.put(MySqliteHelper.COLUMN_APP_NAMEDEV,modelAppList.nameDeveloper);
+        cv.put(MySqliteHelper.COLUMN_APP_DETAILS,modelAppList.details);
+
+        String selection = "_id="+modelAppList.id;
+
+        long resultUpdate = db.update(MySqliteHelper.TABLE_NAME, cv, selection, null);
+
+        return resultUpdate;
+
+    }
+
+    /*
     public ModelAppList getAppxID(int idApp){
 
         ModelAppList modelAppList = new ModelAppList();
@@ -109,5 +125,7 @@ public class ItemDataSource {
         return  modelAppList;
 
     }
+
+    */
 
 }
