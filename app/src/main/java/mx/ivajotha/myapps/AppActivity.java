@@ -93,10 +93,11 @@ public class AppActivity extends AppCompatActivity{
                 finish();
                 return true;
             case R.id.menu_app_edit:
+                /* Raname Title Toolbar*/
                 String fielRequired = getResources().getString(R.string.hit_appEdit);
                 String titleToobar = fielRequired + ": " + nameApp;
-
                 getSupportActionBar().setTitle(titleToobar.toUpperCase());
+
                 FragmentEdit fragmentEdit = FragmentEdit.newInstance(modelAppList);
                 getFragmentManager().beginTransaction().replace(R.id.fragmentApp,fragmentEdit).commit();
                 return true;
