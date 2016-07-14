@@ -78,6 +78,8 @@ public class FragmentEdit extends Fragment implements View.OnClickListener{
 
             long respEditApp = itemDataSource.updateDataApp(modelAppList);
             if(respEditApp != -1){
+                FragmentDetails fragmentDetails = FragmentDetails.newInstance(modelAppList);
+                getFragmentManager().beginTransaction().replace(R.id.fragmentApp, fragmentDetails).commit();
                 Toast.makeText(getActivity(),R.string.msgOk_EditApp, Toast.LENGTH_SHORT).show();
             }else{
                 Toast.makeText(getActivity(),R.string.msgFail_EditApp, Toast.LENGTH_SHORT).show();
