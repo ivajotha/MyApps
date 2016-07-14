@@ -67,7 +67,7 @@ public class FragmentEdit extends Fragment implements View.OnClickListener{
         if (!TextUtils.isEmpty(editnameApp.getText().toString()) &&
                 !TextUtils.isEmpty(editnameDev.getText().toString()) &&
                 !TextUtils.isEmpty(editDetailsApp.getText().toString())){
-            
+
             Integer appId_ = idAppEdit;
             String appName_ = editnameApp.getText().toString();
             String appNameDev_ = editnameDev.getText().toString();
