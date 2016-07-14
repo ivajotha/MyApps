@@ -27,6 +27,7 @@ public class FragmentEdit extends Fragment implements View.OnClickListener{
     private EditText editDetailsApp;
     private CheckBox editIsUpdate;
     private Integer idAppEdit;
+    private Integer resourceId;
     private ItemDataSource itemDataSource;
 
     @Nullable
@@ -37,6 +38,8 @@ public class FragmentEdit extends Fragment implements View.OnClickListener{
         itemDataSource = new ItemDataSource(getActivity());
 
         idAppEdit = getArguments().getInt("key_Id");
+
+        resourceId = getArguments().getInt("key_resourceId");
 
         editnameApp = (EditText) view.findViewById(R.id.actEdit_appName);
         editnameApp.setText(getArguments().getString("key_nameApp"));
@@ -74,6 +77,7 @@ public class FragmentEdit extends Fragment implements View.OnClickListener{
             modelAppList.name = appName_;
             modelAppList.nameDeveloper = appNameDev_;
             modelAppList.details = appDetails_;
+            modelAppList.resourceId = resourceId;
             modelAppList.updated = appUpdated_;
 
             long respEditApp = itemDataSource.updateDataApp(modelAppList);
@@ -103,6 +107,7 @@ public class FragmentEdit extends Fragment implements View.OnClickListener{
         args.putString("key_nameDev",modelAppList.nameDeveloper);
         args.putString("key_detailsApp",modelAppList.details);
         args.putInt("key_updateApp",modelAppList.updated);
+        args.putInt("key_resourceId",modelAppList.resourceId);
         fragment.setArguments(args);
         return fragment;
     }
