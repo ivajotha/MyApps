@@ -102,7 +102,6 @@ public class FragmentDetails extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_details,container,false);
 
-        //itemDataSource = new ItemDataSource(getActivity());
 
         appName = (TextView) view.findViewById(R.id.fragDet_appName);
         appName.setText(getArguments().getString("key_nameApp"));

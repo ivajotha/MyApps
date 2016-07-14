@@ -13,13 +13,24 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 
 import mx.ivajotha.myapps.Model.ModelAppList;
+import mx.ivajotha.myapps.adapter.AdapterAppList;
 import mx.ivajotha.myapps.fragment.FragmentDetails;
+import mx.ivajotha.myapps.fragment.FragmentEdit;
 import mx.ivajotha.myapps.services.ServiceUninstall;
+import mx.ivajotha.myapps.sql.ItemDataSource;
 
 /**
  * Created by jonathan on 07/07/16.
  */
 public class AppActivity extends AppCompatActivity{
+
+    private Integer idApp;
+    private String nameApp;
+    private  String detailsApp;
+    private String nameDevApp;
+    private Integer rescIdApp;
+    private Integer isUpdateApp;
+    Boolean instaledApp = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,14 +43,13 @@ public class AppActivity extends AppCompatActivity{
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
-        int idApp = getIntent().getExtras().getInt("key_idApp");
-        String nameApp = getIntent().getExtras().getString("key_nameApp");
+        idApp = getIntent().getExtras().getInt("key_idApp");
+        nameApp = getIntent().getExtras().getString("key_nameApp");
+        detailsApp = getIntent().getExtras().getString("key_detailsApp");
+        nameDevApp = getIntent().getExtras().getString("key_nameDevApp");
+        rescIdApp = getIntent().getExtras().getInt("key_rescIdApp");
+        isUpdateApp = getIntent().getExtras().getInt("key_isUpdateApp");
 
-        String detailsApp = getIntent().getExtras().getString("key_detailsApp");
-        String nameDevApp = getIntent().getExtras().getString("key_nameDevApp");
-        int rescIdApp = getIntent().getExtras().getInt("key_rescIdApp");
-        int isUpdateApp = getIntent().getExtras().getInt("key_isUpdateApp");
-        Boolean instaledApp = true;
         /* Set Title Toolbar*/
         String fielRequired = getResources().getString(R.string.hit_appDetails);
         String titleToobar = fielRequired + ": " + nameApp;
@@ -69,9 +79,23 @@ public class AppActivity extends AppCompatActivity{
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
+        ModelAppList modelAppList = new ModelAppList();
+        modelAppList.id = idApp;
+        modelAppList.name = nameApp;
+        modelAppList.details = detailsApp;
+        modelAppList.nameDeveloper = nameDevApp;
+        modelAppList.resourceId = rescIdApp;
+        modelAppList.updated = isUpdateApp;
+
         switch (item.getItemId()){
             case android.R.id.home:
                 finish();
+                return true;
+            case R.id.menu_app_edit:
+
+                FragmentEdit fragmentEdit = FragmentEdit.newInstance(modelAppList);
+                getFragmentManager().beginTransaction().replace(R.id.fragmentApp,fragmentEdit).commit();
                 return true;
         }
         return super.onOptionsItemSelected(item);

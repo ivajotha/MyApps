@@ -34,4 +34,5 @@
     <string name="desc_serviceUninstall">Eliminando archivos</string>
     <string name="title_serviceUninstall_ok">Se ha desinstalado</string>
     <string name="txt_dialogUnistall">¿Desea desinstalar la aplicación?</string>
+    <string name="txt_btnEditApp">Guardar cambios</string>
 </resources>
