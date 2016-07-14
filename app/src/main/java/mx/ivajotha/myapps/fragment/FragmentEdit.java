@@ -35,6 +35,7 @@ public class FragmentEdit extends Fragment implements View.OnClickListener{
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_edit, container,false);
 
+        /* Assign values to the fields*/
         itemDataSource = new ItemDataSource(getActivity());
 
         idAppEdit = getArguments().getInt("key_Id");
@@ -62,10 +63,11 @@ public class FragmentEdit extends Fragment implements View.OnClickListener{
 
     @Override
     public void onClick(View view) {
+        /* Validate empty fields */
         if (!TextUtils.isEmpty(editnameApp.getText().toString()) &&
                 !TextUtils.isEmpty(editnameDev.getText().toString()) &&
                 !TextUtils.isEmpty(editDetailsApp.getText().toString())){
-            //Toast.makeText(getActivity(),"OK BIEN", Toast.LENGTH_SHORT).show();
+            
             Integer appId_ = idAppEdit;
             String appName_ = editnameApp.getText().toString();
             String appNameDev_ = editnameDev.getText().toString();
@@ -80,6 +82,7 @@ public class FragmentEdit extends Fragment implements View.OnClickListener{
             modelAppList.resourceId = resourceId;
             modelAppList.updated = appUpdated_;
 
+            /* Save Changes BD */
             long respEditApp = itemDataSource.updateDataApp(modelAppList);
             if(respEditApp != -1){
                 FragmentDetails fragmentDetails = FragmentDetails.newInstance(modelAppList);
