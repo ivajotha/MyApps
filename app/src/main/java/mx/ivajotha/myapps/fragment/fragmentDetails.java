@@ -10,13 +10,10 @@ import android.content.IntentFilter;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.text.Editable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -26,12 +23,11 @@ import mx.ivajotha.myapps.Model.ModelAppList;
 import mx.ivajotha.myapps.R;
 import mx.ivajotha.myapps.services.ServiceUninstall;
 import mx.ivajotha.myapps.services.ServiceUpdate;
-import mx.ivajotha.myapps.sql.ItemDataSource;
 
 /**
  * Created by jonathan on 07/07/16.
  */
-public class FragmentDetails extends Fragment implements View.OnClickListener {
+public class fragmentDetails extends Fragment implements View.OnClickListener {
 
     private TextView appName;
     private TextView nameDev;
@@ -47,9 +43,9 @@ public class FragmentDetails extends Fragment implements View.OnClickListener {
     //private ItemDataSource itemDataSource;
 
 
-    public static FragmentDetails newInstance(ModelAppList modelAppList)
+    public static fragmentDetails newInstance(ModelAppList modelAppList)
     {
-        FragmentDetails fragmentDetails = new FragmentDetails();
+        fragmentDetails fragmentDetails = new fragmentDetails();
         Bundle bundle = new Bundle();
 
         idApp = modelAppList.id;
@@ -74,7 +70,6 @@ public class FragmentDetails extends Fragment implements View.OnClickListener {
                 btnUninstall.setVisibility(View.INVISIBLE);
                 btnUpdOpen.setVisibility(View.INVISIBLE);
                 progressbar.setVisibility(View.GONE);
-                //itemDataSource.deleteApp(idApp);
                 getActivity().finish();
             }
         }

@@ -1,14 +1,12 @@
 package mx.ivajotha.myapps.fragment;
 
 import android.app.Fragment;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -85,7 +83,7 @@ public class FragmentEdit extends Fragment implements View.OnClickListener{
             /* Save Changes BD */
             long respEditApp = itemDataSource.updateDataApp(modelAppList);
             if(respEditApp != -1){
-                FragmentDetails fragmentDetails = FragmentDetails.newInstance(modelAppList);
+                fragmentDetails fragmentDetails = mx.ivajotha.myapps.fragment.fragmentDetails.newInstance(modelAppList);
                 getFragmentManager().beginTransaction().replace(R.id.fragmentApp, fragmentDetails).commit();
                 Toast.makeText(getActivity(),R.string.msgOk_EditApp, Toast.LENGTH_SHORT).show();
             }else{

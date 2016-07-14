@@ -1,23 +1,14 @@
 package mx.ivajotha.myapps;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.CheckBox;
-import android.widget.EditText;
 
 import mx.ivajotha.myapps.Model.ModelAppList;
-import mx.ivajotha.myapps.adapter.AdapterAppList;
-import mx.ivajotha.myapps.fragment.FragmentDetails;
+import mx.ivajotha.myapps.fragment.fragmentDetails;
 import mx.ivajotha.myapps.fragment.FragmentEdit;
-import mx.ivajotha.myapps.services.ServiceUninstall;
-import mx.ivajotha.myapps.sql.ItemDataSource;
 
 /**
  * Created by jonathan on 07/07/16.
@@ -65,7 +56,7 @@ public class AppActivity extends AppCompatActivity{
         modelAppList.updated = isUpdateApp;
         modelAppList.installed =  instaledApp;
 
-        FragmentDetails fragmentDetail = FragmentDetails.newInstance(modelAppList);
+        fragmentDetails fragmentDetail = fragmentDetails.newInstance(modelAppList);
         getFragmentManager().beginTransaction().replace(R.id.fragmentApp,fragmentDetail).commit();
 
     }

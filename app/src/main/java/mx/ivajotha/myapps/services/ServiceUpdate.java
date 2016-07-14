@@ -1,7 +1,6 @@
 package mx.ivajotha.myapps.services;
 
 import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
@@ -13,7 +12,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.NotificationCompat;
 
 import mx.ivajotha.myapps.R;
-import mx.ivajotha.myapps.fragment.FragmentDetails;
 import mx.ivajotha.myapps.sql.ItemDataSource;
 
 /**
